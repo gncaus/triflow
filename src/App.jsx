@@ -48,11 +48,19 @@ const AuthenticatedApp = () => {
 };
 
 function App() {
+  // Vite's `base` (vite.config.js) controls where ASSETS are loaded from —
+  // it says nothing to React Router about URL matching. On a subpath
+  // deployment (e.g. GitHub Pages project pages at /triflow/), the router
+  // must be told the same prefix via `basename`, or every route match and
+  // every <Link to="..."> silently drops it and breaks navigation/reloads.
+  // import.meta.env.BASE_URL is Vite's own copy of `base`, so this always
+  // stays in sync automatically — "/" becomes "" (root, no prefix needed).
+  const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
 
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
-        <Router>
+        <Router basename={basename}>
           <ScrollToTop />
           <AuthenticatedApp />
         </Router>

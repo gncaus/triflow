@@ -10,6 +10,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server/index.js",
+    "deploy:gh-pages": "node scripts/deploy-gh-pages.js",
     "lint": "eslint . --quiet",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p ./jsconfig.json"
@@ -90,6 +91,7 @@
     "autoprefixer": "^10.4.20",
     "concurrently": "^9.1.2",
     "eslint": "^9.19.0",
+    "gh-pages": "^6.2.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-unused-imports": "^4.1.4",
